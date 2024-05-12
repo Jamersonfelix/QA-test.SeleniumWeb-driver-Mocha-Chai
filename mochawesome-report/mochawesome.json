@@ -1,0 +1,177 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-05-12T20:22:56.326Z",
+    "end": "2024-05-12T20:23:13.108Z",
+    "duration": 16782,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "a29d1b66-25e2-4eea-ac8b-0f42e3561540",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "3d859b99-15a2-4bd7-82b2-3bc9105ff00b",
+          "title": "Segundo Teste",
+          "fullFile": "C:\\Users\\jamer\\OneDrive\\Desktop\\aula 5\\test\\secondteste.js",
+          "file": "\\test\\secondteste.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Adicionar uma tarefa com sucesso no segundo testenp",
+              "fullTitle": "Segundo Teste Adicionar uma tarefa com sucesso no segundo testenp",
+              "timedOut": null,
+              "duration": 6623,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// abrir o nevegador\nlet driver = await new Builder().forBrowser(\"firefox\").build();\n\n // navegar ate o site\nawait driver.get(\"https://herziopinto.github.io/lista-de-tarefas/\");\n\n// Adicionar uma nova tarefas\nawait driver.findElement(By.id('inputTask')).sendKeys(\"Aprender Selenium\", Key.RETURN)\n\n//Assertion - verificação do texto da tarefa\nlet seleniumText = await driver.findElement(By.xpath('/html/body/div/section/ul/li/label')).getText()\n.then(function(value) {\n    return value\n});\n\n// Assertion com chai\nseleniumText.should.equal(\"Aprender Selenium\")\n\n// fechar o navegador\nawait driver.quit();",
+              "err": {},
+              "uuid": "d6bdeb34-59a0-4a5a-8697-ea47e497abdc",
+              "parentUUID": null,
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d6bdeb34-59a0-4a5a-8697-ea47e497abdc"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 6623,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": null
+        },
+        {
+          "uuid": "a73e53b2-e4f8-4d85-a264-2be27bea66a7",
+          "title": "Adicionar tarefa",
+          "fullFile": "C:\\Users\\jamer\\OneDrive\\Desktop\\aula 5\\test\\firstTest.js",
+          "file": "\\test\\firstTest.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "1 Adicionar uma tarefa com sucesso",
+              "fullTitle": "Adicionar tarefa 1 Adicionar uma tarefa com sucesso",
+              "timedOut": null,
+              "duration": 6802,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// abrir o nevegador\nlet driver = await new Builder().forBrowser(\"firefox\").build();\n    \n // navegar ate o site\nawait driver.get(\"https://herziopinto.github.io/lista-de-tarefas/\");\n    \n// lista das tarefas - ARRAY\nconst tarefas = [\n    \"Aprender Selenium\",\n    \"html\",\n    \"css\",\n    \"JavaScript\",\n    \"QA\",\n    \"TECHFIXE\",\n    \"LOOP\",\n    \"MOCHA\",\n    \"CYPRESS\",\n    \"TAREFAS\"\n];\n// Loop (FOR) para SELECIONAR e ESCREVER as tarefas\nfor (let i = 0; i < tarefas.length; i++) {\n    await driver.findElement(By.id('inputTask')).sendKeys(tarefas[i], Key.RETURN);\n    \n    // Encontrar o elemento XPATH e obter o texto\n    let xpath = `/html/body/div/section/ul/li[${i + 1}]/label`;\n    let seleniumElement = await driver.findElement(By.xpath(xpath));\n    let actualText = await seleniumElement.getText();\n    \n     //valores para verificação de armazenamento.\n     console.log(`Valor esperado: ${tarefas[i]}`);\n     console.log(`Valor atual: ${actualText}`);\n    \n    // Assertion usando Chai\n    actualText.should.equal(tarefas[i]);\n}\nawait driver.quit();",
+              "err": {},
+              "uuid": "0de7fced-deb1-4d47-8362-9dd6c1d81923",
+              "parentUUID": null,
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "2 Adicionar uma tarefa com sucesso",
+              "fullTitle": "Adicionar tarefa 2 Adicionar uma tarefa com sucesso",
+              "timedOut": null,
+              "duration": 4852,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// abrir o nevegador\nlet driver = await new Builder().forBrowser(\"firefox\").build();\n    \n // navegar ate o site\nawait driver.get(\"https://herziopinto.github.io/lista-de-tarefas/\");\n    \n// lista das tarefas - ARRAY\nconst tarefas = [\n    \"Aprender Selenium\",\n    \"html\",\n    \"css\",\n    \"JavaScript\",\n    \"QA\",\n    \"TECHFIXE\",\n    \"LOOP\",\n    \"MOCHA\",\n    \"CYPRESS\",\n    \"TAREFAS\"\n];\n// Loop (FOR) para SELECIONAR e ESCREVER as tarefas\nfor (let i = 0; i < tarefas.length; i++) {\n    await driver.findElement(By.id('inputTask')).sendKeys(tarefas[i], Key.RETURN);\n    \n    // Encontrar o elemento XPATH e obter o texto\n    let xpath = `/html/body/div/section/ul/li[${i + 1}]/label`;\n    let seleniumElement = await driver.findElement(By.xpath(xpath));\n    let actualText = await seleniumElement.getText();\n    \n     //valores para verificação de armazenamento.\n     console.log(`Valor esperado: ${tarefas[i]}`);\n     console.log(`Valor atual: ${actualText}`);\n    \n    // Assertion usando Chai\n    actualText.should.equal(tarefas[i]);\n}\nawait driver.quit();",
+              "err": {},
+              "uuid": "8b494c5e-957b-4359-9ebf-3ee6264a35d2",
+              "parentUUID": null,
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "3 Adicionar uma tarefa com sucesso",
+              "fullTitle": "Adicionar tarefa 3 Adicionar uma tarefa com sucesso",
+              "timedOut": null,
+              "duration": 4773,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// abrir o nevegador\nlet driver = await new Builder().forBrowser(\"firefox\").build();\n    \n // navegar ate o site\nawait driver.get(\"https://herziopinto.github.io/lista-de-tarefas/\");\n    \n// lista das tarefas - ARRAY\nconst tarefas = [\n    \"Aprender Selenium\",\n    \"html\",\n    \"css\",\n    \"JavaScript\",\n    \"QA\",\n    \"TECHFIXE\",\n    \"LOOP\",\n    \"MOCHA\",\n    \"CYPRESS\",\n    \"TAREFAS\"\n];\n// Loop (FOR) para SELECIONAR e ESCREVER as tarefas\nfor (let i = 0; i < tarefas.length; i++) {\n    await driver.findElement(By.id('inputTask')).sendKeys(tarefas[i], Key.RETURN);\n    \n    // Encontrar o elemento XPATH e obter o texto\n    let xpath = `/html/body/div/section/ul/li[${i + 1}]/label`;\n    let seleniumElement = await driver.findElement(By.xpath(xpath));\n    let actualText = await seleniumElement.getText();\n    \n     //valores para verificação de armazenamento.\n     console.log(`Valor esperado: ${tarefas[i]}`);\n     console.log(`Valor atual: ${actualText}`);\n    \n    // Assertion usando Chai\n    actualText.should.equal(tarefas[i]);\n}\nawait driver.quit();",
+              "err": {},
+              "uuid": "9fe8d773-b76b-4047-968e-8387058d1c77",
+              "parentUUID": null,
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "0de7fced-deb1-4d47-8362-9dd6c1d81923",
+            "8b494c5e-957b-4359-9ebf-3ee6264a35d2",
+            "9fe8d773-b76b-4047-968e-8387058d1c77"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 16427,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": null
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 0
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.4.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
